@@ -1,0 +1,6 @@
+@AutofacInterceptor_HostAddress = http://localhost:5052
+
+GET {{AutofacInterceptor_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
