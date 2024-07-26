@@ -11,7 +11,9 @@ builder.Host
     {
         cb.RegisterType<LoggingInterceptor>().AsSelf();
         cb.RegisterType<LoggingAsyncInterceptor>().AsSelf();
-        cb.RegisterType<UserService>().As<IUserService>().EnableInterfaceInterceptors().InterceptedBy(typeof(LoggingInterceptor));
+        cb.RegisterType<TestTimingInterceptor>().AsSelf();
+        cb.RegisterType<TestAsyncTimingInterceptor>().AsSelf();
+        cb.RegisterType<UserService>().As<IUserService>().EnableInterfaceInterceptors().InterceptedBy(typeof(LoggingInterceptor)).InterceptedBy(typeof(TestTimingInterceptor));
     });
 
 // Add services to the container.

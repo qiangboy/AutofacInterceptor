@@ -2,9 +2,11 @@
 
 public class UserService : IUserService
 {
-    public Task<string> GetUserByIdAsync(int id)
+    public async Task<string> GetUserByIdAsync(int id)
     {
-        return Task.FromResult($"User Id = {id}");
+        await Task.Delay(100);
+
+        return $"User Id = {id}";
     }
 
     public bool IsActive(int id)
