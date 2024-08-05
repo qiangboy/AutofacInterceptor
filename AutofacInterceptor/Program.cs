@@ -9,10 +9,10 @@ builder.Host
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureContainer<ContainerBuilder>(cb =>
     {
-        cb.RegisterType<LoggingInterceptor>().AsSelf();
-        cb.RegisterType<LoggingAsyncInterceptor>().AsSelf();
-        cb.RegisterType<TestTimingInterceptor>().AsSelf();
-        cb.RegisterType<TestAsyncTimingInterceptor>().AsSelf();
+        cb.RegisterType<LoggingInterceptor>().AsSelf().SingleInstance();
+        cb.RegisterType<LoggingAsyncInterceptor>().AsSelf().SingleInstance();
+        cb.RegisterType<TestTimingInterceptor>().AsSelf().SingleInstance();
+        cb.RegisterType<TestAsyncTimingInterceptor>().AsSelf().SingleInstance();
         cb.RegisterType<UserService>().As<IUserService>().EnableInterfaceInterceptors().InterceptedBy(typeof(LoggingInterceptor)).InterceptedBy(typeof(TestTimingInterceptor));
     });
 
